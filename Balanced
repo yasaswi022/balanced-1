@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define bool int
+Struct sNode {
+    Char data;
+    Struct sNode* next;
+};
+Void push(struct sNode** top_ref, int new_data);
+Int pop(struct sNode** top_ref);
+Bool isMatchingPair(char character1, char character2)
+{
+    If (character1 == ‘(‘ && character2 == ‘)’)
+    Return 1;
+   Else if (character1 == ‘{‘ && character2 == ‘}’)
+   Return 1;
+    Else if (character1 == ‘[‘ && character2 == ‘]’)
+     Return 1;
+  Else
+       Return 0;
+}
+Bool areBracketsBalanced(char exp[])
+{
+ Int I = 0;
+  Struct sNode* stack = NULL;
+While (exp[i]) 
+    {
+
+        If (exp[i] == ‘{‘ || exp[i] == ‘(‘ || exp[i] == ‘[‘)
+
+            Push(&stack, exp[i]);
+ If (exp[i] == ‘}’ || exp[i] == ‘)’ || exp[i] == ‘]’) {
+   If (stack == NULL)
+     Return;
+     Else if (!isMatchingPair(pop(&stack), exp[i]))
+    Return 0;
+        }
+        I++;
+    }
+  If (stack == NULL)
+       Return 1; // balanced
+  Else
+       Return 0; // not balanced
+}
+Int main()
+{
+    Char exp[100] = “{()}[]”;
+     If (areBracketsBalanced(exp))
+        Printf(“Balanced\n”);
+Else
+        Printf(“Not Balanced \n”);
+    Return 0;
+}
+    Struct sNode* new_node    = (struct sNode*)malloc(sizeof(struct sNode));
+   If (new_node == NULL) {
+    Printf(“Stack overflow n”);
+     Exit(0);
+   New_node->data = new_data;
+     New_node->next = (*top_ref);
+(*top_ref) = new_node;
+}
+Int pop(struct sNode** top_ref)
+{  
+ Char res;
+    Struct sNode* top;
+    If (*top_ref == NULL) {
+Printf(“Stack overflow n”);
+  Exit(0);
+    }
+    Else {
+        Top = *top_ref;
+        Res = top->data;
+        *top_ref = top->next;
+        Free(top);
+        Return res;
+    }
+}
